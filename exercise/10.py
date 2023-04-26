@@ -4,10 +4,8 @@ import sys
 
 def load(filename: str) -> Dict:
     """Loads pickled dictionary stored in given file
-
     Args:
       filename - relative path to file to load
-
     Returns:
       dictionary stored in given file
     """
@@ -24,7 +22,7 @@ def load(filename: str) -> Dict:
 # Task 1 unpickle the dictionary and assigned it to the variable
 # spa_eng_dict. 
 # This should be 1 line of code that starts with...
-# spa_eng_dict = ???
+spa_eng_dict = load('spanish_to_english.dat')
 
 assert spa_eng_dict["gato"] == "cat"
 assert spa_eng_dict["perro"] == "dog"
@@ -39,5 +37,14 @@ words = ["gato", "universidad", "pitón", "amor", "ciencias", "comida"]
 # if a word is not in the spa_eng_dict, then write "unknown" on the line.
 # I have provided a file called translation_ans.txt to show you what
 # the final result should look like. 
+
+with open('translate.txt', 'w') as file:
+  for word in words:
+    if word in spa_eng_dict:
+      file.wrie(spa_eng_dict[word])
+    else:
+      file.write('unknown')
+    file.write('\n')
+  file.close() 
 
 
